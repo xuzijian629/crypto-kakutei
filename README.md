@@ -24,18 +24,16 @@
 * 複数の通貨を保有している場合、年度ごとの損益は各通貨について独立に計算した結果の和となります。
 
 ```python
-manager = PeriodicAveraged("xrp")
-
+manager = PeriodicAveraged()
 # 2017年に 200.0 jpy/xrp で 500 xrp 購入 (100000円)
-manager.register_buy(2017, 200.0, 500)
+manager.register_buy("xrp", 2017, 200.0, 500)
 # 2017年に 250.0 jpy/xrp で 100 xrp 売却 (25000円)
-manager.register_sell(2017, 250.0, 100)
+manager.register_sell("xrp", 2017, 250.0, 100)
 
-manager.register_sell(2021, 80.0, 300)
-manager.register_buy(2021, 60.0, 50)
+manager.register_sell("xrp", 2021, 80.0, 300)
+manager.register_buy("xrp", 2021, 60.0, 50)
 
-
-# Prints: {2017: 5000.0, 2018: 0.0, 2019: 0.0, 2020: 0.0, 2021: -31333.333333333336}
+# Prints: {'xrp': {2017: 5000.0, 2018: 0.0, 2019: 0.0, 2020: 0.0, 2021: -31333.333333333336}}
 print(manager.get_profits())
 ```
 
