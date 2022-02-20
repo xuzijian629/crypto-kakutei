@@ -1,7 +1,7 @@
 from typing import Dict, List, Tuple
 
 
-class PeriodicAveraged:
+class PeriodicAveragedSingle:
     def __init__(self, currency_name: str) -> None:
         self.currency = currency_name
         # key: year, value: list of (rate, amount)
@@ -69,3 +69,27 @@ class PeriodicAveraged:
         if not self.computed:
             self._compute()
         return self.profits
+
+
+class PeriodicAveraged:
+    def __init__(self):
+        self.currency_manager: Dict[str, PeriodicAveragedSingle] = {}
+
+    def register_buy(
+        self, currency, year: int, rate: float, amount: float, jpy_charge: float = 0.0
+    ) -> None:
+        if currency not in self.currency_manager:
+            self.currency_manager[currency] = PeriodicAveragedSingle(currency)
+        self.currency_manager[currency].register_buy(year, rate, amount, jpy_charge)
+
+    def register_sell(
+        self, currency, year: int, rate: float, amount: float, jpy_charge: float = 0.0
+    ) -> None:
+        assert currency in self.currency_manager, "Buy must occur before sell."
+        self.currency_manager[currency].register_sell(year, rate, amount, jpy_charge)
+
+    def get_profits(self) -> Dict[str, Dict[int, float]]:
+        profits: Dict[str, Dict[int, float]] = {}
+        for currency, manager in self.currency_manager.items():
+            profits[currency] = manager.get_profits()
+        return profits
