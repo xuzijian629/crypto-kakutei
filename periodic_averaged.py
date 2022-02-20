@@ -19,16 +19,12 @@ class PeriodicAveraged:
         if year not in self.charge_history:
             self.charge_history[year] = 0.0
 
-    def register_buy(
-        self, year: int, rate: float, amount: float, jpy_charge: float = 0.0
-    ) -> None:
+    def register_buy(self, year: int, rate: float, amount: float, jpy_charge: float = 0.0) -> None:
         self.maybe_make_key(year)
         self.buy_history[year].append((rate, amount))
         self.charge_history[year] += jpy_charge
 
-    def register_sell(
-        self, year: int, rate: float, amount: float, jpy_charge: float = 0.0
-    ) -> None:
+    def register_sell(self, year: int, rate: float, amount: float, jpy_charge: float = 0.0) -> None:
         self.maybe_make_key(year)
         self.sell_history[year].append((rate, amount))
         self.charge_history[year] += jpy_charge

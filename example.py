@@ -1,6 +1,5 @@
 from periodic_averaged import PeriodicAveraged
 
-
 if __name__ == "__main__":
     manager = PeriodicAveraged("xrp")
     # 2017年に 200.0 jpy/xrp で 500 xrp 購入 (100000円)
