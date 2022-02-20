@@ -1,4 +1,4 @@
-from periodic_averaged import PeriodicAveraged
+from crykak.periodic_averaged import PeriodicAveraged
 
 if __name__ == "__main__":
     manager = PeriodicAveraged()
