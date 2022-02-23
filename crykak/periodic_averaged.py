@@ -72,18 +72,18 @@ class PeriodicAveragedSingle:
 
 
 class PeriodicAveraged:
-    def __init__(self):
+    def __init__(self) -> None:
         self.currency_manager: Dict[str, PeriodicAveragedSingle] = {}
 
     def register_buy(
-        self, currency, year: int, rate: float, amount: float, jpy_charge: float = 0.0
+        self, currency: str, year: int, rate: float, amount: float, jpy_charge: float = 0.0
     ) -> None:
         if currency not in self.currency_manager:
             self.currency_manager[currency] = PeriodicAveragedSingle(currency)
         self.currency_manager[currency].register_buy(year, rate, amount, jpy_charge)
 
     def register_sell(
-        self, currency, year: int, rate: float, amount: float, jpy_charge: float = 0.0
+        self, currency: str, year: int, rate: float, amount: float, jpy_charge: float = 0.0
     ) -> None:
         assert currency in self.currency_manager, "Buy must occur before sell."
         self.currency_manager[currency].register_sell(year, rate, amount, jpy_charge)
