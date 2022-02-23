@@ -43,7 +43,40 @@ History = List[Transaction]
                 Transaction("sell", 0.5, 200),
             ],
             150,
-        )
+        ),
+        (
+            [
+                Transaction("buy", 1, 100),
+                Transaction("sell", 0.5, 200, jpy_charge=10),
+            ],
+            140,
+        ),
+        (
+            [
+                Transaction("buy", 1, 100),
+                Transaction("sell", 0.1, 20),
+                Transaction("sell", 0.2, 50),
+            ],
+            40,
+        ),
+        (
+            [
+                Transaction("buy", 1, 100),
+                Transaction("buy", 2, 170),
+                Transaction("sell", 0.5, 200),
+            ],
+            155,
+        ),
+        (
+            [
+                Transaction("buy", 1, 100),
+                Transaction("buy", 2, 170),
+                Transaction("buy", 3, 210),
+                Transaction("sell", 1, 120),
+                Transaction("sell", 1.5, 200),
+            ],
+            120,
+        ),
     ],
 )
 def test_periodic_averaged_same_year(history: History, expected: float) -> None:
