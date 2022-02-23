@@ -1,6 +1,7 @@
 from typing import List
 
 import pytest
+
 from crykak.periodic_averaged import PeriodicAveragedSingle
 
 
