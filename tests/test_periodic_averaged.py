@@ -36,6 +36,13 @@ History = List[Transaction]
             ],
             100,
         ),
+        (
+            [
+                Transaction("buy", 1, 100),
+                Transaction("sell", 0.5, 200),
+            ],
+            150,
+        )
     ],
 )
 def test_periodic_averaged_same_year(history: History, expected: float) -> None:
