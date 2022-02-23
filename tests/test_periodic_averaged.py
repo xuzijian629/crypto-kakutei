@@ -14,7 +14,7 @@ class Transaction:
         self.year = year
         self.jpy_charge = jpy_charge
 
-    def register_to(self, manager: PeriodicAveragedSingle):
+    def register_to(self, manager: PeriodicAveragedSingle) -> None:
         if self.buy_or_sell == "buy":
             manager.register_buy(self.year, self.rate, self.amount, self.jpy_charge)
         elif self.buy_or_sell == "sell":
@@ -38,7 +38,7 @@ History = List[Transaction]
         ),
     ],
 )
-def test_periodic_averaged_same_year(history: History, expected: float):
+def test_periodic_averaged_same_year(history: History, expected: float) -> None:
     manager = PeriodicAveragedSingle("test")
     for transaction in history:
         transaction.register_to(manager)

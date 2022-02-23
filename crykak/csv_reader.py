@@ -18,7 +18,7 @@ def parse_coincheck_csv_line(line: Dict[str, str]) -> Tuple[str, str, int, float
     raise NotImplementedError()
 
 
-def register_from_csv(manager: PeriodicAveraged, csv_file: str):
+def register_from_csv(manager: PeriodicAveraged, csv_file: str) -> None:
     with open(csv_file, encoding="utf-8-sig") as f:
         reader = csv.DictReader(f)
 
