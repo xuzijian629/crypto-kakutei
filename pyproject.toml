@@ -11,15 +11,5 @@ line_length = 100
 py_version = "py38"
 isort_known_first_party = ["crykak"]
 
-[tool.pysen.lint.source]
-  excludes = [
-    "build/",
-  ]
-
-[tool.mypy]
-  exlude = [
-    "build/",
-  ]
-
 [[tool.pysen.lint.mypy_targets]]
   paths = ["."]
