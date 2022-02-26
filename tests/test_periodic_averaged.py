@@ -311,6 +311,25 @@ add_multi_year_test(
     },
 )
 
+add_multi_year_test(
+    "zero_sum",
+    {
+        2019: [
+            Transaction("buy", 10, 100),
+            Transaction("sell", 10, 100),
+        ],
+        2021: [
+            Transaction("buy", 10, 100),
+            Transaction("sell", 10, 100),
+        ],
+    },
+    {
+        2019: 0,
+        2020: 0,
+        2021: 0,
+    },
+)
+
 ALL_TESTS = SINGLE_YEAR_TESTS + MULTI_YEAR_TESTS
 
 
