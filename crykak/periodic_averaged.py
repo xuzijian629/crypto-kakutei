@@ -52,8 +52,10 @@ class PeriodicAveragedSingle:
                 profit += rate * amount
                 sell_amount += amount
 
-            assert total_amount + buy_amount > 0
-            averaged_price = buy_sum / (total_amount + buy_amount)
+            assert total_amount + buy_amount >= 0
+            if total_amount + buy_amount > 0:
+                averaged_price = buy_sum / (total_amount + buy_amount)
+
             for _, amount in self.sell_history[year]:
                 profit -= averaged_price * amount
             profit -= self.charge_history[year]
@@ -94,3 +96,13 @@ class PeriodicAveraged:
         for currency, manager in self.currency_manager.items():
             profits[currency] = manager.get_profits()
         return profits
+
+    def get_total_profits(self) -> Dict[int, float]:
+        profits = self.get_profits()
+        total_profits: Dict[int, float] = {}
+        for currency in profits:
+            for year, profit in profits[currency].items():
+                if year not in total_profits:
+                    total_profits[year] = 0.0
+                total_profits[year] += profit
+        return total_profits
