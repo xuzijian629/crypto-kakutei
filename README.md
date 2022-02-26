@@ -31,7 +31,8 @@ manager = PeriodicAveraged()
 manager.register_buy("xrp", 2017, 200.0, 500)
 # 2017年に 250.0 jpy/xrp で 100 xrp 売却 (25000円)
 manager.register_sell("xrp", 2017, 250.0, 100)
-print(manager.get_total_profits())
+
+print(manager.get_total_profits())  # {2017: 5000.0}
 ```
 
 `PeriodicAveraged`クラスがサポートする関数に関してはお手数ですが[crykak/periodic_averaged.py](https://github.com/xuzijian629/crypto-kakutei/blob/main/crykak/periodic_averaged.py)を御覧ください。
