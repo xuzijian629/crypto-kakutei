@@ -20,6 +20,7 @@ register_from_csv(manager, "2021.csv")
 
 print(manager.get_total_profits())
 ```
+総平均法の損益計算には、目的の年度だけではなく過去すべての取引履歴が必要です。
 
 ## 自分でデータを登録する場合
 ```python
