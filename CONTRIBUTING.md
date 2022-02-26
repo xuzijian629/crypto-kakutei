@@ -11,5 +11,22 @@ crypto-kakuteiに興味をもっていただき、ありがとうございます
 ご自身でプルリクエストを作成できる場合には作成していただけると大変助かります。
 アルゴリズムについての変更の場合、その正当性を確認できるテストを追加していただきたく思っております。
 
+## 環境構築
+```bash
+pip install -r pysen-requirements.txt
+pip install -e ".[test]"
+```
+
 ## テスト追加方法
-[国税庁](https://www.nta.go.jp/publication/pamph/shotoku/kakuteishinkokukankei/kasoutuka/)から、移動平均法および総平均法に基づく損益計算ができるExcelファイルが配布されていますので、ご活用ください。
+テストは`tests/`以下にあり、pytestを使ってテストしております。
+正しい損益の計算方法としては、
+[国税庁](https://www.nta.go.jp/publication/pamph/shotoku/kakuteishinkokukankei/kasoutuka/)から移動平均法および総平均法に基づく損益計算ができるExcelファイルが配布されていますので、ご活用ください。
+
+## テストの実行
+`pysen run lint`でpythonのスタイルチェックを行っています。
+`pysen run format`で一部のlintエラーを修正できます。
+
+```bash
+pysen run lint
+pytest
+```
